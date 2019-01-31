@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/naijopkr/video-convert#readme",
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.3.0",
     "@babel/preset-react": "^7.0.0",
     "css-loader": "^2.1.0",
     "webpack": "^4.29.0",
@@ -34,10 +35,14 @@
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.3.1",
     "babel-loader": "^8.0.5",
+    "moment": "^2.24.0",
+    "moment-duration-format": "^2.2.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
+    "react-dropzone": "^8.0.4",
     "react-redux": "^6.0.0",
     "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
     "redux": "^4.0.1"
   }
 }
