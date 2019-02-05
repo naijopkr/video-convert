@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { HashRouter as Router, Switch, Route } from 'react-router-dom'
 
+import store from './reducers'
+
 import ConvertScreen from './screens/ConvertScreen'
 import VideoSelectScreen from './screens/VideoSelectScreen'
 
