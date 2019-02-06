@@ -1,16 +1,15 @@
 const webpack = require('webpack')
+const htmlWebPackPlugin = require('html-webpack-plugin')
 const path = require('path')
 
 const OUTPUT_PATH = path.resolve(__dirname, 'dist')
 
 module.exports = {
-  target: 'electron-renderer',
   mode: 'development',
-  entry: path.resolve(__dirname, 'src') + '/index.js',
+  entry: './src/index.js',
   output: {
-    path: OUTPUT_PATH,
-    publicPath: '/dist/',
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    path: OUTPUT_PATH
   },
   module: {
     rules: [
@@ -31,6 +30,9 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    new htmlWebPackPlugin({ template: './src/index.html' })
+  ],
   resolve: {
     extensions: ['.js', '.jsx']
   },

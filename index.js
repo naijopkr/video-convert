@@ -7,8 +7,9 @@ app.on('ready', () => {
     height: 600,
     width: 800,
     webPreferences: {
+      nodeIntegration: true,
       backgroundThrottling: false
     }
   })
-  mainWindow.loadURL(`file://${__dirname}/src/index.html`)
+  mainWindow.loadFile(`${__dirname}/src/index.html`)
 })
