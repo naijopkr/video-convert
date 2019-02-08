@@ -38,16 +38,18 @@ class VideoSelectScreen extends Component {
   render() {
     return (
       <div className={this.props.small ? "video-select-screen-small" : "video-select-screen"}>
-        <Dropzone
-          onDrop={this.onDrop}
-          multiple
-          accept="video/*"
-          className="dropzone"
-          activeClassName="dropzone-active"
-          rejectClassName="dropzone-reject"
-        >
-          {this.renderChildren}
-        </Dropzone>
+        <div className='dropzone'>
+          <Dropzone
+            onDrop={this.onDrop}
+            multiple
+            accept="video/*"
+            activeClassName="dropzone-active"
+            rejectClassName="dropzone-reject"
+          >
+            {this.renderChildren}
+          </Dropzone>
+        </div>
+        
       </div>
     );
   }
