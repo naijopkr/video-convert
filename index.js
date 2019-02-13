@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, ipcMain } = require('electron')
 
 let mainWindow
 
@@ -11,5 +11,9 @@ app.on('ready', () => {
       backgroundThrottling: false
     }
   })
-  mainWindow.loadFile(`${__dirname}/src/index.html`)
+  mainWindow.loadURL(`file://${__dirname}/src/index.html`)
+})
+
+ipcMain.on('videos:added', (event, videos) => {
+  console.log(videos)
 })

@@ -6,6 +6,7 @@ const OUTPUT_PATH = path.resolve(__dirname, 'dist')
 
 module.exports = {
   mode: 'development',
+  target: 'electron-renderer',
   entry: './src/index.js',
   output: {
     filename: 'bundle.js',

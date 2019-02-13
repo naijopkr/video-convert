@@ -25,31 +25,33 @@ class VideoSelectScreen extends Component {
 
   }
 
-  renderChildren({ isDragActive, isDragReject }) {
+  renderChildren({ getRootProps, getInputProps, isDragActive, isDragReject }) {
+    let message
     if (isDragActive) {
-      return <h4 className="drop-message">Omnomnom, let me have those videos!</h4>;
+      message = <h4 className="drop-message">Omnomnom, let me have those videos!</h4>;
     } else if (isDragReject) {
-      return <h4 className="drop-message">Uh oh, I don't know how to deal with that type of file!</h4>;
+      message = <h4 className="drop-message">Uh oh, I don't know how to deal with that type of file!</h4>;
     } else {
-      return <h4 className="drop-message">Drag and drop some files on me, or click to select.</h4>
+      message = <h4 className="drop-message">Drag and drop some files on me, or click to select.</h4>
     }
+    return (
+      <div {...getRootProps()} className={`dropzone ${isDragActive ? 'dropzone-actiove' : 'dropzone-react'}`}>
+        <input {...getInputProps()} />
+        {message}
+      </div>
+    )
   }
 
   render() {
     return (
       <div className={this.props.small ? "video-select-screen-small" : "video-select-screen"}>
-        <div className='dropzone'>
-          <Dropzone
-            onDrop={this.onDrop}
-            multiple
-            accept="video/*"
-            activeClassName="dropzone-active"
-            rejectClassName="dropzone-reject"
-          >
-            {this.renderChildren}
-          </Dropzone>
-        </div>
-        
+        <Dropzone
+          onDrop={this.onDrop}
+          multiple
+          accept="video/*"
+        >
+          {this.renderChildren}
+        </Dropzone>
       </div>
     );
   }
