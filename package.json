@@ -40,6 +40,7 @@
     "@babel/preset-env": "^7.3.1",
     "babel-loader": "^8.0.5",
     "electron": "^4.0.4",
+    "fluent-ffmpeg": "^2.1.2",
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
     "moment-duration-format": "^2.2.2",
