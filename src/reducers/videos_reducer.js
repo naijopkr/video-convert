@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import _ from 'lodash'
 import {
   ADD_VIDEO,
   ADD_VIDEOS,
@@ -6,25 +6,53 @@ import {
   REMOVE_ALL_VIDEOS,
   VIDEO_PROGRESS,
   VIDEO_COMPLETE
-} from '../actions/types';
+} from '../actions/types'
 
-const INITIAL_STATE = {};
+const INITIAL_STATE = {}
+
+const videoComplete = (state, action) => ({
+  ...state,
+  [action.payload.path]: {
+    ...action.payload,
+    complete: true
+  }
+})
+
+const videoProgress = (state, action) => ({
+  ...state,
+  [action.payload.path]: action.payload
+})
+
+const addVideos = (state, action) => {
+  const keys = _.mapKeys(action.payload, 'path')
+  return {
+    ...state,
+    ...keys
+  }
+}
+
+const addVideo = (state, action) => ({
+  ...state, 
+  [action.payload.path]: action.payload
+})
+
+const removeVideo = (state, action) => _.omit(state, action.payload.path)
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case VIDEO_COMPLETE:
-      return { ...state, [action.payload.path]: { ...action.payload, complete: true } };
+      return videoComplete(state, action)
     case VIDEO_PROGRESS:
-      return { ...state, [action.payload.path]: action.payload };
+      return videoProgress(state, action)
     case ADD_VIDEOS:
-      return { ...state, ..._.mapKeys(action.payload, 'path')}
+      return addVideos(state, action)
     case ADD_VIDEO:
-      return { ...state, [action.payload.path]: action.payload };
+      return addVideo(state, action)
     case REMOVE_VIDEO:
-      return _.omit(state, action.payload.path);
+      return removeVideo(state, action)
     case REMOVE_ALL_VIDEOS:
       return INITIAL_STATE
     default:
-      return state;
+      return state
   }
 }
